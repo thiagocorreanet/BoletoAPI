@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BoletoAPI.Application\BoletoAPI.Application.csproj" />
+    <ProjectReference Include="..\BoletoAPI.Domain.Services\BoletoAPI.Domain.Services.csproj" />
     <ProjectReference Include="..\BoletoAPI.Domain\BoletoAPI.Domain.csproj" />
     <ProjectReference Include="..\BoletoAPI.Infrastructure.Data\BoletoAPI.Infrastructure.Data.csproj" />
   </ItemGroup>

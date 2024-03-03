@@ -1,22 +1,22 @@
-﻿using BoletoAPI.Domain.Entities;
-using BoletoAPI.Domain.Interfaces;
+﻿using BoletoAPI.Domain.Core.Interfaces.Repositories;
+using BoletoAPI.Domain.Entities;
 using BoletoNetCore;
 
 namespace BoletoAPI.Infrastructure.Data.Repositories
 {
     public class BoletoRepository : IBoletoRepository
     {
-        private IBanco _iBanco;
+        private IBanco _banco;
 
-        public string RetornarHTML(DadosBoleto dadosBoleto, DadosBeneficiario dadosBeneficiario, Domain.Entities.ContaBancaria contaBancaria, Sacado sacado, DadosEndereco endereco)
+        public string RetornarHtml(DadosBoleto dadosBoleto, DadosBeneficiario dadosBeneficiario, Domain.Entities.ContaBancaria contaBancaria, Sacado sacado, DadosEndereco endereco)
         {
-            _iBanco = ObterTipoBanco(dadosBoleto);
+            _banco = ObterTipoBanco(dadosBoleto);
 
-            _iBanco.Beneficiario = PreencherDadosBeneficiario(dadosBeneficiario, contaBancaria);
+            _banco.Beneficiario = PreencherDadosBeneficiario(dadosBeneficiario, contaBancaria);
 
-            _iBanco.FormataBeneficiario();
+            _banco.FormataBeneficiario();
 
-            var boleto = GerarLayoutBoleto(_iBanco, dadosBoleto, sacado, endereco);
+            var boleto = GerarLayoutBoleto(_banco, dadosBoleto, sacado, endereco);
             var boletoBancario = new BoletoBancario { Boleto = boleto };
 
             return boletoBancario.MontaHtmlEmbedded();
