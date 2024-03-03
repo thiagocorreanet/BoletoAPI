@@ -9,11 +9,11 @@ namespace BoletoAPI.Apresentation.WebAPI.Controllers
     [Route("[controller]")]
     public class BoletosController : ControllerBase
     {
-        private readonly IBoletoService _boletoService;
+        private readonly IBoletoApplicationService _boletoApplicationService;
 
-        public BoletosController(IBoletoService boletoService)
+        public BoletosController(IBoletoApplicationService boletoApplicationService)
         {
-            _boletoService = boletoService;
+            _boletoApplicationService = boletoApplicationService;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace BoletoAPI.Apresentation.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> GetBoleto(DadosBoletoDTO dadosBoletoDTO)
         {
-            var gerarHTMLBoleto = await _boletoService.GerarHTMLBoleto(dadosBoletoDTO);
+            var gerarHTMLBoleto = await _boletoApplicationService.GerarHTMLBoletoAsync(dadosBoletoDTO);
 
             if (gerarHTMLBoleto == null)
                 return BadRequest(gerarHTMLBoleto);

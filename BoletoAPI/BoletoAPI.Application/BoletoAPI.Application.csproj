@@ -11,7 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BoletoAPI.Domain.Core\BoletoAPI.Domain.Core.csproj" />
     <ProjectReference Include="..\BoletoAPI.Domain\BoletoAPI.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\BoletoApplicationService.cs" />
   </ItemGroup>
 
 </Project>
